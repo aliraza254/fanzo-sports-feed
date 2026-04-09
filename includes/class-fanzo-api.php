@@ -334,7 +334,7 @@ class FanzoSportsFeed_API {
 				$dates[] = $date_key;
 			}
 
-			$f1_logo   = 'https://dunningsbar.com/wp-content/uploads/logo-F1.png';
+			$f1_logo   = FANZO_SPORTS_FEED_PLUGIN_URL . 'assets/images/logo-F1.png';
 			$team1_raw = sanitize_url( (string) $item->team1 );
 			$team2_raw = sanitize_url( (string) $item->team2 );
 			$team1_src = ( 'F1' === $description ) ? $f1_logo : $team1_raw;
