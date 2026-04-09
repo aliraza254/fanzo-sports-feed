@@ -112,9 +112,16 @@ class FanzoSportsFeed_Shortcode {
 			return '';
 		}
 
+		// Instantiate cache handler.
+		$cache = new FanzoSportsFeed_Cache();
+
+		// Handle manual refresh: bust the cache for this URL if requested.
+		if ( isset( $_GET['fanzo_refresh'] ) && '1' === $_GET['fanzo_refresh'] ) {
+			$cache->bust_cache( $api_url );
+		}
+
 		// Fetch data (cached).
-		$cache   = new FanzoSportsFeed_Cache();
-		$data    = $cache->get_fixtures( $api_url );
+		$data = $cache->get_fixtures( $api_url );
 
 		if ( is_wp_error( $data ) ) {
 			if ( current_user_can( 'manage_options' ) ) {
@@ -132,9 +139,16 @@ class FanzoSportsFeed_Shortcode {
 		$dates    = $data['dates'];
 
 		if ( empty( $fixtures ) ) {
-			return '<div class="fanzo-sports-feed">'
-				. '<p>' . esc_html__( 'No fixtures are currently available.', 'fanzo-sports-feed' ) . '</p>'
-				. '</div>';
+			return '<div class="fanzo-sports-feed">' .
+				'<div class="fanzo-empty-state">' .
+					'<div class="fanzo-empty-icon" aria-hidden="true">📅</div>' .
+					'<h2>' . esc_html__( 'No Fixtures Scheduled', 'fanzo-sports-feed' ) . '</h2>' .
+					'<p>' . esc_html__( 'We couldn\'t find any upcoming matches for this venue at the moment. Please check back later or refresh the feed.', 'fanzo-sports-feed' ) . '</p>' .
+					'<div class="fanzo-empty-actions">' .
+						'<a href="' . esc_url( add_query_arg( 'fanzo_refresh', '1' ) ) . '" class="fanzo-refresh-btn">' . esc_html__( 'Refresh Feed', 'fanzo-sports-feed' ) . '</a>' .
+					'</div>' .
+				'</div>' .
+			'</div>';
 		}
 
 		// Determine default date (nearest upcoming fixture).

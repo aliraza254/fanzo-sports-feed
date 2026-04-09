@@ -304,10 +304,19 @@ class FanzoSportsFeed_API {
 			);
 		}
 
-		if ( ! isset( $xml->channel->item ) ) {
+		if ( ! isset( $xml->channel ) ) {
 			return new WP_Error(
 				'fanzo_xml_structure',
-				__( 'The Fanzo XML feed has an unexpected structure. No fixture items found.', 'fanzo-sports-feed' )
+				__( 'The Fanzo XML feed has an unexpected structure. No "channel" element found.', 'fanzo-sports-feed' )
+			);
+		}
+
+		if ( ! isset( $xml->channel->item ) ) {
+			return array(
+				'fixtures' => array(),
+				'sports'   => array(),
+				'dates'    => array(),
+				'format'   => 'xml',
 			);
 		}
 
