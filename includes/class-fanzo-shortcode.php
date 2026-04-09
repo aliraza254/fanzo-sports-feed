@@ -139,9 +139,15 @@ class FanzoSportsFeed_Shortcode {
 		$dates    = $data['dates'];
 
 		if ( empty( $fixtures ) ) {
+			$cur_month = strtoupper( current_time( 'M' ) );
+			$cur_day   = current_time( 'j' );
+
 			return '<div class="fanzo-sports-feed">' .
 				'<div class="fanzo-empty-state">' .
-					'<div class="fanzo-empty-icon" aria-hidden="true">📅</div>' .
+					'<div class="fanzo-dynamic-icon" aria-hidden="true">' .
+						'<span class="fanzo-icon-month">' . esc_html( $cur_month ) . '</span>' .
+						'<span class="fanzo-icon-day">' . esc_html( $cur_day ) . '</span>' .
+					'</div>' .
 					'<h2>' . esc_html__( 'No Fixtures Scheduled', 'fanzo-sports-feed' ) . '</h2>' .
 					'<p>' . esc_html__( 'We couldn\'t find any upcoming matches for this venue at the moment. Please check back later or refresh the feed.', 'fanzo-sports-feed' ) . '</p>' .
 					'<div class="fanzo-empty-actions">' .
@@ -152,7 +158,7 @@ class FanzoSportsFeed_Shortcode {
 		}
 
 		// Determine default date (nearest upcoming fixture).
-		$today        = gmdate( 'Y-m-d' );
+		$today        = current_time( 'Y-m-d' );
 		$default_date = $today;
 		foreach ( $dates as $d ) {
 			if ( $d >= $today ) {
