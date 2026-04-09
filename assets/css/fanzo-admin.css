@@ -73,36 +73,46 @@
    ========================================================================== */
 
 .fanzo-admin-card .fanzo-status {
-	display: inline-flex;
+	display: flex;
 	align-items: center;
-	gap: 6px;
-	font-size: 0.875rem;
+	gap: 8px;
+	font-size: 0.9rem;
 	font-weight: 600;
-	margin-bottom: 8px;
+	padding: 8px 12px;
+	border-radius: 6px;
+	margin-bottom: 12px;
 }
 
 .fanzo-admin-card .fanzo-status-ok {
-	color: #00a32a;
+	color: #007017;
+	background: rgba( 0, 163, 42, 0.08 );
+	border: 1px solid rgba( 0, 163, 42, 0.2 );
 }
 
 .fanzo-admin-card .fanzo-status-error {
-	color: #d63638;
+	color: #b32d2e;
+	background: rgba( 214, 54, 56, 0.08 );
+	border: 1px solid rgba( 214, 54, 56, 0.2 );
 }
 
 .fanzo-admin-card .fanzo-error-msg {
-	font-size: 0.8rem;
+	font-size: 0.85rem;
 	color: #d63638;
-	background: rgba( 214, 54, 56, 0.06 );
-	padding: 6px 8px;
-	border-radius: 3px;
-	margin: 4px 0 8px;
+	background: #fcf0f1;
+	padding: 10px 12px;
+	border-radius: 6px;
+	border-left: 3px solid #d63638;
+	margin: 0 0 12px;
 	word-break: break-word;
+	line-height: 1.4;
 }
 
 .fanzo-admin-card .fanzo-last-fetch {
-	font-size: 0.8rem;
-	color: #6c737a;
-	margin: 6px 0 0;
+	font-size: 0.85rem;
+	color: #646970;
+	margin: 0;
+	display: block;
+	padding-left: 4px;
 }
 
 /* ==========================================================================

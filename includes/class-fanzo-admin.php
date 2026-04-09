@@ -497,11 +497,17 @@ class FanzoSportsFeed_Admin {
 						<h2><?php esc_html_e( 'Feed Status', 'fanzo-sports-feed' ); ?></h2>
 						<?php if ( ! empty( $last_fetch ) ) : ?>
 							<?php if ( 'success' === $last_fetch_status ) : ?>
-								<span class="fanzo-status fanzo-status-ok">&#10003; <?php esc_html_e( 'Last fetch successful', 'fanzo-sports-feed' ); ?></span>
+								<span class="fanzo-status fanzo-status-ok">
+									<span class="dashicons dashicons-yes-alt"></span>
+									<?php esc_html_e( 'Last fetch successful', 'fanzo-sports-feed' ); ?>
+								</span>
 							<?php else : ?>
-								<span class="fanzo-status fanzo-status-error">&#10007; <?php esc_html_e( 'Last fetch failed', 'fanzo-sports-feed' ); ?></span>
+								<span class="fanzo-status fanzo-status-error">
+									<span class="dashicons dashicons-dismiss"></span>
+									<?php esc_html_e( 'Last fetch failed', 'fanzo-sports-feed' ); ?>
+								</span>
 								<?php if ( ! empty( $last_fetch_status ) && 'success' !== $last_fetch_status ) : ?>
-									<p class="fanzo-error-msg"><?php echo esc_html( $last_fetch_status ); ?></p>
+									<div class="fanzo-error-msg"><?php echo esc_html( $last_fetch_status ); ?></div>
 								<?php endif; ?>
 							<?php endif; ?>
 							<p class="fanzo-last-fetch">

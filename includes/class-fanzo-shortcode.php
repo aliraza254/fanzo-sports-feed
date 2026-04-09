@@ -88,9 +88,7 @@ class FanzoSportsFeed_Shortcode {
 		$feed_enabled = get_option( 'fanzo_feed_enabled', '1' );
 		if ( '0' === $feed_enabled ) {
 			$message = get_option( 'fanzo_disabled_message', __( 'The fixtures feed is currently unavailable. Please check back soon.', 'fanzo-sports-feed' ) );
-			return '<div class="fanzo-sports-feed fanzo-feed-disabled">'
-				. '<p>' . esc_html( $message ) . '</p>'
-				. '</div>';
+			return $this->render_alert( $message, 'info' );
 		}
 
 		// Determine which API URL to use.
@@ -105,9 +103,10 @@ class FanzoSportsFeed_Shortcode {
 
 		if ( empty( $api_url ) ) {
 			if ( current_user_can( 'manage_options' ) ) {
-				return '<div class="fanzo-sports-feed fanzo-notice">'
-					. '<p>' . esc_html__( 'Fanzo Sports Feed: No API URL configured. Please visit Settings → Fanzo Sports Feed and add a JSON or XML endpoint.', 'fanzo-sports-feed' ) . '</p>'
-					. '</div>';
+				return $this->render_alert(
+					__( 'Fanzo Sports Feed: No API URL configured. Please visit Settings → Fanzo Sports Feed and add a JSON or XML endpoint.', 'fanzo-sports-feed' ),
+					'warning'
+				);
 			}
 			return '';
 		}
@@ -124,14 +123,11 @@ class FanzoSportsFeed_Shortcode {
 		$data = $cache->get_fixtures( $api_url );
 
 		if ( is_wp_error( $data ) ) {
-			if ( current_user_can( 'manage_options' ) ) {
-				return '<div class="fanzo-sports-feed fanzo-error">'
-					. '<p>' . esc_html( $data->get_error_message() ) . '</p>'
-					. '</div>';
-			}
-			return '<div class="fanzo-sports-feed fanzo-error">'
-				. '<p>' . esc_html__( 'Fixture data is temporarily unavailable. Please try again later.', 'fanzo-sports-feed' ) . '</p>'
-				. '</div>';
+			$error_msg = current_user_can( 'manage_options' )
+				? $data->get_error_message()
+				: __( 'Fixture data is temporarily unavailable. Please try again later.', 'fanzo-sports-feed' );
+
+			return $this->render_alert( $error_msg, 'error', true );
 		}
 
 		$fixtures = $data['fixtures'];
@@ -365,5 +361,47 @@ class FanzoSportsFeed_Shortcode {
 		}
 
 		return false;
+	}
+
+	/**
+	 * Render a premium alert/notice box.
+	 *
+	 * @since  1.1.0
+	 * @param  string $message     The message to display.
+	 * @param  string $type        'error', 'warning', or 'info'.
+	 * @param  bool   $add_refresh Whether to add a refresh button.
+	 * @return string              HTML output.
+	 */
+	private function render_alert( $message, $type = 'info', $add_refresh = false ) {
+		$icons = array(
+			'error'   => '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>',
+			'warning' => '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"/></svg>',
+			'info'    => '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path d="M11 7h2v2h-2V7zm0 4h2v6h-2v-6zm1-9C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg>',
+		);
+
+		$icon_html = isset( $icons[ $type ] ) ? $icons[ $type ] : $icons['info'];
+		$class     = "fanzo-alert fanzo-alert-{$type}";
+
+		ob_start();
+		?>
+		<div class="fanzo-sports-feed">
+			<div class="<?php echo esc_attr( $class ); ?>" role="alert">
+				<div class="fanzo-alert-icon">
+					<?php echo $icon_html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+				</div>
+				<div class="fanzo-alert-content">
+					<p><?php echo esc_html( $message ); ?></p>
+					<?php if ( $add_refresh ) : ?>
+						<div class="fanzo-alert-actions">
+							<a href="<?php echo esc_url( add_query_arg( 'fanzo_refresh', '1' ) ); ?>" class="fanzo-alert-btn">
+								<?php esc_html_e( 'Try Again', 'fanzo-sports-feed' ); ?>
+							</a>
+						</div>
+					<?php endif; ?>
+				</div>
+			</div>
+		</div>
+		<?php
+		return ob_get_clean();
 	}
 }
