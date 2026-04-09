@@ -1,0 +1,146 @@
+/**
+ * Fanzo Sports Feed — Admin Page Styles
+ *
+ * Scoped to .fanzo-admin-wrap to avoid any conflict with WP core admin CSS.
+ *
+ * @package FanzoSportsFeed
+ * @since   1.0.0
+ */
+
+/* ==========================================================================
+   1. Page Header
+   ========================================================================== */
+
+.fanzo-admin-wrap h1 {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	margin-bottom: 20px;
+}
+
+.fanzo-admin-wrap .fanzo-admin-logo {
+	font-size: 1.6rem;
+	line-height: 1;
+}
+
+/* ==========================================================================
+   2. Two-column Layout
+   ========================================================================== */
+
+.fanzo-admin-layout {
+	display: flex;
+	gap: 24px;
+	align-items: flex-start;
+	flex-wrap: wrap;
+}
+
+.fanzo-admin-main {
+	flex: 1 1 500px;
+	min-width: 0;
+}
+
+.fanzo-admin-sidebar {
+	flex: 0 0 280px;
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+}
+
+/* ==========================================================================
+   3. Sidebar Cards
+   ========================================================================== */
+
+.fanzo-admin-card {
+	background: #fff;
+	border: 1px solid #c3c4c7;
+	border-radius: 4px;
+	padding: 16px 18px;
+	box-shadow: 0 1px 3px rgba( 0, 0, 0, 0.06 );
+}
+
+.fanzo-admin-card h2 {
+	font-size: 0.9rem;
+	text-transform: uppercase;
+	letter-spacing: 0.06em;
+	color: #50575e;
+	margin: 0 0 12px;
+	padding-bottom: 8px;
+	border-bottom: 1px solid #e0e0e0;
+}
+
+/* ==========================================================================
+   4. Feed Status Indicators
+   ========================================================================== */
+
+.fanzo-admin-card .fanzo-status {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	font-size: 0.875rem;
+	font-weight: 600;
+	margin-bottom: 8px;
+}
+
+.fanzo-admin-card .fanzo-status-ok {
+	color: #00a32a;
+}
+
+.fanzo-admin-card .fanzo-status-error {
+	color: #d63638;
+}
+
+.fanzo-admin-card .fanzo-error-msg {
+	font-size: 0.8rem;
+	color: #d63638;
+	background: rgba( 214, 54, 56, 0.06 );
+	padding: 6px 8px;
+	border-radius: 3px;
+	margin: 4px 0 8px;
+	word-break: break-word;
+}
+
+.fanzo-admin-card .fanzo-last-fetch {
+	font-size: 0.8rem;
+	color: #6c737a;
+	margin: 6px 0 0;
+}
+
+/* ==========================================================================
+   5. Shortcode Reference Card
+   ========================================================================== */
+
+.fanzo-shortcode-card .fanzo-shortcode-input {
+	font-family: Consolas, "Courier New", monospace;
+	font-size: 0.8rem;
+	background: #f6f7f7;
+	cursor: text;
+	margin-bottom: 10px;
+}
+
+/* ==========================================================================
+   6. Settings Form Tweaks
+   ========================================================================== */
+
+.fanzo-admin-main .form-table th {
+	font-weight: 600;
+}
+
+.fanzo-admin-main .form-table td .description {
+	margin-top: 6px;
+	color: #646970;
+}
+
+/* ==========================================================================
+   7. Responsive — narrow screens
+   ========================================================================== */
+
+@media screen and ( max-width: 782px ) {
+	.fanzo-admin-layout {
+		flex-direction: column;
+	}
+
+	.fanzo-admin-sidebar {
+		flex: 1 1 100%;
+		width: 100%;
+	}
+}

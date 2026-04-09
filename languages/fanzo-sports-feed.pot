@@ -1,0 +1,288 @@
+# Copyright (C) 2024 Fanzo
+# This file is distributed under the same license as the Fanzo Sports Feed plugin.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Fanzo Sports Feed 1.0.0\n"
+"Report-Msgid-Bugs-To: https://fanzo.com/\n"
+"POT-Creation-Date: 2024-01-01 00:00+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"X-Generator: WP-CLI 2.x\n"
+"X-Domain: fanzo-sports-feed\n"
+
+#. Plugin Name of the plugin.
+msgid "Fanzo Sports Feed"
+msgstr ""
+
+#. Plugin URI of the plugin.
+msgid "https://fanzo.com/"
+msgstr ""
+
+#. Description of the plugin.
+msgid "Fetches sports fixture data from the Fanzo XML API and displays it on the frontend via a shortcode, Gutenberg block, and classic widget. Includes a full admin settings interface."
+msgstr ""
+
+#. Author of the plugin.
+msgid "Fanzo"
+msgstr ""
+
+#. Author URI of the plugin.
+msgid "https://fanzo.com/"
+msgstr ""
+
+#: includes/class-fanzo-activator.php:37
+msgid "The fixtures feed is currently unavailable. Please check back soon."
+msgstr ""
+
+#: includes/class-fanzo-api.php:39
+msgid "The Fanzo API URL is not configured. Please set it in Settings → Fanzo Sports Feed."
+msgstr ""
+
+#: includes/class-fanzo-api.php:57
+#, php-format
+msgid "Failed to connect to the Fanzo API: %s"
+msgstr ""
+
+#: includes/class-fanzo-api.php:72
+#, php-format
+msgid "The Fanzo API returned an unexpected HTTP status: %d"
+msgstr ""
+
+#: includes/class-fanzo-api.php:82
+msgid "The Fanzo API returned an empty response."
+msgstr ""
+
+#: includes/class-fanzo-api.php:102
+msgid "Unknown XML parse error."
+msgstr ""
+
+#: includes/class-fanzo-api.php:109
+#, php-format
+msgid "Failed to parse the fixture XML feed: %s"
+msgstr ""
+
+#: includes/class-fanzo-api.php:120
+msgid "The Fanzo XML feed has an unexpected structure. No fixture items found."
+msgstr ""
+
+#: includes/class-fanzo-admin.php:190
+msgid "You do not have permission to perform this action."
+msgstr ""
+
+#: includes/class-fanzo-admin.php:196
+msgid "Security check failed. Please try again."
+msgstr ""
+
+#: includes/class-fanzo-admin.php:228
+msgid "Fanzo cache cleared successfully. The next page load will fetch fresh data from the API."
+msgstr ""
+
+#: includes/class-fanzo-admin.php:234
+msgid "Fanzo Sports Feed settings saved."
+msgstr ""
+
+#: includes/class-fanzo-admin.php:241
+msgid "Configure the Fanzo XML feed URL and enable or disable the fixture display."
+msgstr ""
+
+#: includes/class-fanzo-admin.php:248
+msgid "Control how long fixture data is cached and what message appears when the feed is disabled."
+msgstr ""
+
+#: includes/class-fanzo-admin.php:256
+msgid "Enter the full Fanzo XML fixture feed URL for your venue. Include the venue ID in the path."
+msgstr ""
+
+#: includes/class-fanzo-admin.php:271
+msgid "Enable the fixture feed on the frontend"
+msgstr ""
+
+#: includes/class-fanzo-admin.php:276
+msgid "Uncheck to globally hide the feed. The shortcode will display the disabled message below instead."
+msgstr ""
+
+#: includes/class-fanzo-admin.php:295
+msgid "1 hour"
+msgstr ""
+
+#: includes/class-fanzo-admin.php:296
+msgid "6 hours"
+msgstr ""
+
+#: includes/class-fanzo-admin.php:297
+msgid "12 hours (recommended)"
+msgstr ""
+
+#: includes/class-fanzo-admin.php:298
+msgid "24 hours"
+msgstr ""
+
+#: includes/class-fanzo-admin.php:307
+msgid "How long fixture data is cached before a fresh API request is made."
+msgstr ""
+
+#: includes/class-fanzo-admin.php:323
+msgid "This message is shown instead of fixtures when the feed is disabled above."
+msgstr ""
+
+#: includes/class-fanzo-admin.php:334
+msgid "You do not have sufficient permissions to access this page."
+msgstr ""
+
+#: includes/class-fanzo-admin.php:361
+msgid "Feed Status"
+msgstr ""
+
+#: includes/class-fanzo-admin.php:363
+msgid "Last fetch successful"
+msgstr ""
+
+#: includes/class-fanzo-admin.php:366
+msgid "Last fetch failed"
+msgstr ""
+
+#: includes/class-fanzo-admin.php:374
+#, php-format
+msgid "Last fetched: %s"
+msgstr ""
+
+#: includes/class-fanzo-admin.php:378
+msgid "No fetch recorded yet. The API will be called on first page load."
+msgstr ""
+
+#: includes/class-fanzo-admin.php:384
+msgid "Cache"
+msgstr ""
+
+#: includes/class-fanzo-admin.php:385
+msgid "Force a fresh API pull on the next page load by clearing the current cache."
+msgstr ""
+
+#: includes/class-fanzo-admin.php:388
+msgid "Clear Cache Now"
+msgstr ""
+
+#: includes/class-fanzo-admin.php:393
+msgid "Shortcode"
+msgstr ""
+
+#: includes/class-fanzo-admin.php:394
+msgid "Paste this shortcode into any page or post to display the fixture feed."
+msgstr ""
+
+#: includes/class-fanzo-admin.php:405
+msgid "Shortcode"
+msgstr ""
+
+#: includes/class-fanzo-admin.php:412
+msgid "With a custom venue URL: "
+msgstr ""
+
+#: includes/class-fanzo-admin.php:418
+msgid "Shortcode with venue override"
+msgstr ""
+
+#: includes/class-fanzo-shortcode.php
+msgid "The fixtures feed is currently unavailable. Please check back soon."
+msgstr ""
+
+#: includes/class-fanzo-shortcode.php
+msgid "Fanzo Sports Feed: No API URL configured. Please visit Settings → Fanzo Sports Feed."
+msgstr ""
+
+#: includes/class-fanzo-shortcode.php
+msgid "Fixture data is temporarily unavailable. Please try again later."
+msgstr ""
+
+#: includes/class-fanzo-shortcode.php
+msgid "No fixtures are currently available."
+msgstr ""
+
+#: includes/class-fanzo-shortcode.php
+msgid "Filter by sport"
+msgstr ""
+
+#: includes/class-fanzo-shortcode.php
+msgid "Date navigation"
+msgstr ""
+
+#: includes/class-fanzo-shortcode.php
+msgid "Previous dates"
+msgstr ""
+
+#: includes/class-fanzo-shortcode.php
+msgid "Next dates"
+msgstr ""
+
+#: includes/class-fanzo-shortcode.php
+msgid "TODAY"
+msgstr ""
+
+#: includes/class-fanzo-shortcode.php
+msgid "No fixtures available for the selected date and sport."
+msgstr ""
+
+#: includes/class-fanzo-widget.php:31
+msgid "Fanzo Sports Feed"
+msgstr ""
+
+#: includes/class-fanzo-widget.php:33
+msgid "Displays upcoming sports fixtures from the Fanzo feed."
+msgstr ""
+
+#: includes/class-fanzo-widget.php:68
+msgid "Upcoming Fixtures"
+msgstr ""
+
+#: includes/class-fanzo-widget.php:100
+msgid "Title:"
+msgstr ""
+
+#: includes/class-fanzo-widget.php:113
+msgid "Days ahead to show:"
+msgstr ""
+
+#: includes/class-fanzo-block.php:44
+msgid "Fanzo Sports Feed"
+msgstr ""
+
+#: includes/class-fanzo-block.php:45
+msgid "Display live sports fixtures from the Fanzo feed."
+msgstr ""
+
+#: includes/class-fanzo-rest-api.php:93
+msgid "Override Fanzo venue API URL for this request."
+msgstr ""
+
+#: includes/class-fanzo-rest-api.php:105
+msgid "You must be authenticated to access Fanzo fixture data. Use an application password or log in."
+msgstr ""
+
+#: includes/class-fanzo-rest-api.php:122
+msgid "The Fanzo fixture feed is currently disabled."
+msgstr ""
+
+#: includes/class-fanzo-rest-api.php:131
+msgid "No Fanzo API URL configured."
+msgstr ""
+
+#: fanzo-sports-feed.php
+msgid "Fanzo Sports Feed Settings"
+msgstr ""
+
+#: fanzo-sports-feed.php
+msgid "Fanzo Sports Feed"
+msgstr ""
+
+#: uninstall.php
+msgid ""
+msgstr ""
