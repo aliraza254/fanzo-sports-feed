@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name:       Fanzo Sports Feed
- * Plugin URI:        https://www.linkedin.com/in/muhammad-ali-raza-449587230/
+ * Plugin URI:        https://github.com/aliraza254/
  * Description:       Fetches sports fixture data from the Fanzo XML API and displays it on the frontend via a shortcode, Gutenberg block, and classic widget. Includes a full admin settings interface.
  * Version:           1.0.0
  * Requires at least: 6.0
